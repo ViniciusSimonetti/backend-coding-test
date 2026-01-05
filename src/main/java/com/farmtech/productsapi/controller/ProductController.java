@@ -1,23 +1,32 @@
 package com.farmtech.productsapi.controller;
 
-import model.Product;
+import com.farmtech.productsapi.model.Product;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.List;
+
 @RestController
+@RequestMapping("/products")
 public class ProductController {
 
-    @PostMapping("/Create")
+    @PostMapping
     public String create(@RequestBody Product product) {
-        System.out.print(product.name);
-        return "OK";
-    }
-    @PutMapping ("/Uptade")
-    public String uptade(int id, @RequestBody Product product) {
-        return "OK";
-    }
-    @GetMapping ("/List")
-    public String List(int id) {
         return "OK";
     }
 
+    @PutMapping("/{id}")
+    public String update(@PathVariable Long id, @RequestBody Product product) {
+        return "OK";
+    }
+
+    @GetMapping
+    public List<Product> list() {
+        return Collections.emptyList();
+    }
+
+    @GetMapping("/{id}")
+    public Product getById(@PathVariable Long id) {
+        return new Product();
+    }
 }

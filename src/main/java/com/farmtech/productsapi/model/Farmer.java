@@ -1,4 +1,4 @@
-package model;
+package com.farmtech.productsapi.model;
 
 public class Farmer {
     public String document;
