@@ -1,6 +1,6 @@
 package com.farmtech.productsapi.controller;
 
-import com.farmtech.productsapi.model.Product;
+import com.farmtech.productsapi.dto.ProductDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -10,23 +10,27 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
+    //Cria um novo produto
     @PostMapping
-    public String create(@RequestBody Product product) {
+    public String create(@RequestBody ProductDTO product) {
         return "OK";
     }
 
+    //Atualiza um produto existente
     @PutMapping("/{id}")
-    public String update(@PathVariable Long id, @RequestBody Product product) {
+    public String update(@PathVariable Long id, @RequestBody ProductDTO product) {
         return "OK";
     }
 
+    //Lista os produtos
     @GetMapping
-    public List<Product> list() {
+    public List<ProductDTO> list() {
         return Collections.emptyList();
     }
 
+    //Faz a busca do produto atraves do ID
     @GetMapping("/{id}")
-    public Product getById(@PathVariable Long id) {
-        return new Product();
+    public ProductDTO getById(@PathVariable Long id) {
+        return new ProductDTO();
     }
 }
