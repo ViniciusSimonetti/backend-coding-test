@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id; // Chave primária
+    public Long id; //Chave primária
 
     @Column(nullable = false, unique = true)//Nao vai permitir duplicidade de nome
     public String name; // Nome do produto (único e obrigatório)

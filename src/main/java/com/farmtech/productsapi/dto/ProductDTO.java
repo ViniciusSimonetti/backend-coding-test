@@ -1,15 +1,16 @@
 package com.farmtech.productsapi.dto;
+
 import java.time.LocalDateTime;
 
 public class ProductDTO {
 
-    private Long id; // Chave primária
+    public Long id; //Identificador único do produto
+    public String name; // Nome do produto (único e obrigatório)
+    public String  status; //Status do produto (enum)
 
-    private String name; // Nome do produto (único e obrigatório)
-    private String  status; //Status do produto (enum)
-    private FarmerDTO farmerDTO; //Produtor associado ao produto
+    public FarmerDTO farmer; //Produtor associado ao produto
 
-    private LocalDateTime createdAt; //Data de criação
-    private LocalDateTime updatedAt; //Data de atualização
+    public LocalDateTime createdAt; //Data de criação
+    public LocalDateTime updatedAt; //Data de atualização
 
 }

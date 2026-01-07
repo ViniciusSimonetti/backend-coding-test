@@ -1,6 +1,10 @@
 package com.farmtech.productsapi.controller;
-
 import com.farmtech.productsapi.dto.ProductDTO;
+
+import com.farmtech.productsapi.mapper.Mapper;
+import com.farmtech.productsapi.model.ProductModel;
+import com.farmtech.productsapi.service.interfaces.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -10,10 +14,21 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
+    private final ProductService productService;
+
+    private Mapper mapper = new Mapper();
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
     //Cria um novo produto
     @PostMapping
-    public String create(@RequestBody ProductDTO product) {
-        return "OK";
+    public ProductDTO create(@RequestBody ProductModel product) {
+        ProductDTO productDTO = mapper.MapperToDTO(product);
+        productDTO.farmer = mapper.MapperToDTO(product.farmer);
+
+        return productService.saveProduct(productDTO);
     }
 
     //Atualiza um produto existente
