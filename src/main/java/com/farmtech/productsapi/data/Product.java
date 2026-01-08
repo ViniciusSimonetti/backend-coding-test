@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 
+//Entidade JPA para representar produtos no banco de dados
 @Entity
 public class Product {
     @Id

@@ -1,5 +1,6 @@
 package com.farmtech.productsapi.model;
 
+//Modelo para representar dados de agricultores
 public class FarmerModel {
     public String document;
     public String farmName;

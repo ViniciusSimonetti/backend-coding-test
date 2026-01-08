@@ -2,6 +2,7 @@ package com.farmtech.productsapi.dto;
 
 import java.time.LocalDateTime;
 
+//DTO para representar dados de produtos
 public class ProductDTO {
 
     public Long id; //Identificador único do produto

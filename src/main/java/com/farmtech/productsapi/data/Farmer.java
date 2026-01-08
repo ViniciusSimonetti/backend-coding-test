@@ -2,6 +2,7 @@ package com.farmtech.productsapi.data;
 
 import jakarta.persistence.*;
 
+//Entidade JPA para representar um agricultor no banco de dados
 @Entity
 public class Farmer {
     @Id

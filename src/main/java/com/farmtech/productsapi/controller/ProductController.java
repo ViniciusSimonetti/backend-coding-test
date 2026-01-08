@@ -10,20 +10,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.List;
 
+//Controlador REST para gerenciar produtos
 @RestController
 @RequestMapping("/products")
+
 public class ProductController {
-
+    //Injetando o serviço de produtos
     private final ProductService productService;
-
+    //Instanciando o mapper
     private Mapper mapper = new Mapper();
 
+    //Construtor para injeção de dependência
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
     //Cria um novo produto
-    @PostMapping
+    @PostMapping("Create")
     public ProductDTO create(@RequestBody ProductModel product) {
         //Implementando o mapper
         ProductDTO productDTO = mapper.MapperToDTO(product);
@@ -33,13 +36,15 @@ public class ProductController {
     }
 
     //Atualiza um produto existente
-    @PutMapping("/{id}")
-    public String update(@PathVariable Long id, @RequestBody ProductDTO product) {
-        return "OK";
+    @PutMapping("Update/{id}")
+    public ProductDTO update(@PathVariable Long id, @RequestBody ProductModel  product) {
+        ProductDTO productDTO = mapper.MapperToDTO(product);
+        productDTO.farmer = mapper.MapperToDTO(product.farmer);
+        return productService.updateProduct(id, productDTO);
     }
 
     //Lista os produtos
-    @GetMapping
+    @GetMapping("List")
     public List<ProductDTO> list() {
         return Collections.emptyList();
     }

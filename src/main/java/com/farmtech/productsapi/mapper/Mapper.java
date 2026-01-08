@@ -7,6 +7,7 @@ import com.farmtech.productsapi.dto.ProductDTO;
 import com.farmtech.productsapi.model.FarmerModel;
 import com.farmtech.productsapi.model.ProductModel;
 
+//Classe Mapper para conversão entre DTOs, entidades e modelos
 public class Mapper {
     //Mapear ProductDTO para Product entity
     public Product MapperToEntity(ProductDTO productDTO) {
