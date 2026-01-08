@@ -31,6 +31,10 @@ public class ProductServiceImpl implements ProductService {
     //Implementação para salvar um produto no H2 database
     @Override
     public ProductDTO saveProduct(ProductDTO productDTO) {
+        //Regra de negocio para validacao (nao permitir menos 3 caracteres no nome e nome em branco)
+
+
+
         //Implementando o mapper
         Product product  = mapper.MapperToEntity(productDTO);
         product.farmer = mapper.MapperToEntity(productDTO.farmer);
@@ -86,19 +90,25 @@ public class ProductServiceImpl implements ProductService {
     //Implementação para atualizar um produto no H2 database
     @Override
     public List<ProductDTO> listProducts() {
-        return productRepository.findAll()
-                .stream()
-                .map(p -> {
-                    ProductDTO dto = mapper.MapperToDTO(p);
-                    if (p.farmer != null) dto.farmer = mapper.MapperToDTO(p.farmer);
-                    return dto;
+        return  productRepository.findAll().stream()
+                .map(product -> {
+                    ProductDTO productDTO = mapper.MapperToDTO(product);
+
+                    System.out.println("Lista nao encontrada" + product);
+                    return productDTO;
                 })
                 .toList();
     }
 
     @Override
     public ProductDTO getById(Long id) {
-        return null;
+        return productRepository.findById(id)
+                .map(product -> {
+                    ProductDTO productDTO = mapper.MapperToDTO(product);
+                    productDTO.farmer = mapper.MapperToDTO(product.farmer);
+                    return productDTO;
+                })
+                .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
 

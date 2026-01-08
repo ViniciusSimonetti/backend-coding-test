@@ -52,6 +52,6 @@ public class ProductController {
     //Faz a busca do produto atraves do ID
     @GetMapping("/{id}")
     public ProductDTO getById(@PathVariable Long id) {
-        return new ProductDTO();
+        return productService.getById(id);
     }
 }
