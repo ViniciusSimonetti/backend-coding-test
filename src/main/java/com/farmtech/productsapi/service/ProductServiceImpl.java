@@ -38,9 +38,5 @@ public class ProductServiceImpl implements ProductService {
         dto.farmer = mapper.MapperToDTO(farmer);
         return dto;
     }
-
-
-
-
 }
 

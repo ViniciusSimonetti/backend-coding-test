@@ -10,14 +10,17 @@ import com.farmtech.productsapi.model.ProductModel;
 public class Mapper {
     //Mapear ProductDTO para Product entity
     public Product MapperToEntity(ProductDTO productDTO) {
+
         Product product = new Product();
         product.name = productDTO.name;
         product.status = productDTO.status;
 
         return product;
     }
+
     //Mapear Product entity para ProductDTO
     public ProductDTO MapperToDTO(Product product) {
+
         ProductDTO productDTO = new ProductDTO();
         productDTO.id = product.id;
         productDTO.name = product.name;
@@ -27,8 +30,10 @@ public class Mapper {
 
         return productDTO;
     }
+
     //Mapear ProductModel para ProductDTO
     public ProductDTO MapperToDTO (ProductModel product){
+
         ProductDTO productDTO = new ProductDTO();
         productDTO.name = product.name;
         productDTO.status = product.status;
@@ -36,8 +41,11 @@ public class Mapper {
         return productDTO;
     }
 
+    //--------------------------------------------------------
+
     //Mapear FarmerDTO para Farmer entity
     public Farmer MapperToEntity(FarmerDTO farmerDTO) {
+
         Farmer farmer = new Farmer();
         farmer.document = farmerDTO.document;
         farmer.farmName = farmerDTO.farmName;
@@ -46,8 +54,9 @@ public class Mapper {
         return farmer;
     }
 
-    //Mapear Farmer entity para FarmerDTO
+    //Mapear Farmer entity(Data) para FarmerDTO
     public FarmerDTO MapperToDTO(Farmer farmer) {
+
         FarmerDTO farmerDTO = new FarmerDTO();
         farmerDTO.document = farmer.document;
         farmerDTO.farmName = farmer.farmName;
@@ -55,8 +64,10 @@ public class Mapper {
 
         return farmerDTO;
     }
+
     //Mapear FarmerModel para FarmerDTO
      public FarmerDTO MapperToDTO(FarmerModel farmer) {
+
          FarmerDTO farmerDTO = new FarmerDTO();
          farmerDTO.document = farmer.document;
          farmerDTO.farmName = farmer.farmName;

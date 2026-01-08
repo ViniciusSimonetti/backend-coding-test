@@ -25,6 +25,7 @@ public class ProductController {
     //Cria um novo produto
     @PostMapping
     public ProductDTO create(@RequestBody ProductModel product) {
+        //Implementando o mapper
         ProductDTO productDTO = mapper.MapperToDTO(product);
         productDTO.farmer = mapper.MapperToDTO(product.farmer);
 
