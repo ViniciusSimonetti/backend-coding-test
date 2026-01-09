@@ -5,6 +5,8 @@ import com.farmtech.productsapi.mapper.Mapper;
 import com.farmtech.productsapi.model.ProductModel;
 import com.farmtech.productsapi.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -27,12 +29,18 @@ public class ProductController {
 
     //Cria um novo produto
     @PostMapping("Create")
-    public ProductDTO create(@RequestBody ProductModel product) {
+    //ResponseEntity para tratamento de erros de validacao
+    public ResponseEntity <Object> create(@RequestBody ProductModel product) {
         //Implementando o mapper
         ProductDTO productDTO = mapper.MapperToDTO(product);
         productDTO.farmer = mapper.MapperToDTO(product.farmer);
 
-        return productService.saveProduct(productDTO);
+        //Condicao para retornar status HTPP de acordo com os erros de validacao
+        Object result = productService.saveProduct(productDTO);
+        if(result instanceof String)
+            return new ResponseEntity<>(result, HttpStatusCode.valueOf(500));
+        else
+            return new ResponseEntity<>(result, HttpStatusCode.valueOf(200));
     }
 
     //Atualiza um produto existente
@@ -46,9 +54,8 @@ public class ProductController {
     //Lista os produtos
     @GetMapping("List")
     public List<ProductDTO> list() {
-        return Collections.emptyList();
+        return productService.listProducts();
     }
-
     //Faz a busca do produto atraves do ID
     @GetMapping("/{id}")
     public ProductDTO getById(@PathVariable Long id) {

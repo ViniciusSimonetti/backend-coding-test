@@ -9,8 +9,8 @@ public class Farmer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id; //define um numero maior de algoritmos de geracao de ID
 
-    @Column(nullable = false, unique = true)
-    public String document; //CPF unico e obrigatorio
+    @Column(nullable = false)
+    public String document; //Documento obrigatorio
 
     @Column(nullable = false)
     public String farmName; //Nome da fazenda obrigatorio

@@ -9,6 +9,7 @@ import com.farmtech.productsapi.repository.Interfaces.FarmerRepository;
 import com.farmtech.productsapi.repository.Interfaces.ProductRepository;
 import com.farmtech.productsapi.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,12 +28,25 @@ public class ProductServiceImpl implements ProductService {
     //Classe responsavel por converter entre DTOs e entidades
     private Mapper mapper = new Mapper();
 
-
     //Implementação para salvar um produto no H2 database
     @Override
-    public ProductDTO saveProduct(ProductDTO productDTO) {
-        //Regra de negocio para validacao (nao permitir menos 3 caracteres no nome e nome em branco)
+    public Object saveProduct(ProductDTO  productDTO) {
 
+        //Regra de negocio para validacao (nao permitir menos 3 caracteres no nome e nome em branco)
+        // 1) validação do nome
+        if (productDTO == null || productDTO.name == null) {
+            return "Product name is required";
+        }
+
+        String name = productDTO.name.trim();
+
+        if (name.isEmpty() || name.length() < 3) {
+            return "Product name must have at least 3 characters.";
+        }
+
+
+        // salva o nome já corrigido (sem espaços)
+        productDTO.name = name;
 
 
         //Implementando o mapper
@@ -47,6 +61,7 @@ public class ProductServiceImpl implements ProductService {
         Product result  =  productRepository.save(product);
         ProductDTO dto = mapper.MapperToDTO(result);
         dto.farmer = mapper.MapperToDTO(farmer);
+
         return dto;
     }
 
@@ -93,8 +108,8 @@ public class ProductServiceImpl implements ProductService {
         return  productRepository.findAll().stream()
                 .map(product -> {
                     ProductDTO productDTO = mapper.MapperToDTO(product);
+                    productDTO.farmer = mapper.MapperToDTO(product.farmer);
 
-                    System.out.println("Lista nao encontrada" + product);
                     return productDTO;
                 })
                 .toList();
