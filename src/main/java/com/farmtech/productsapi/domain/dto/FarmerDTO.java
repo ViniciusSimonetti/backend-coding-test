@@ -1,4 +1,4 @@
-package com.farmtech.productsapi.dto;
+package com.farmtech.productsapi.domain.dto;
 
 //DTO para representar dados de agricultores
 public class FarmerDTO {

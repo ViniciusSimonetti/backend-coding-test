@@ -1,4 +1,4 @@
-package com.farmtech.productsapi.model;
+package com.farmtech.productsapi.domain.model;
 
 //Modelo para representar dados de agricultores
 public class FarmerModel {

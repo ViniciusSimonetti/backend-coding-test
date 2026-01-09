@@ -1,7 +1,6 @@
 package com.farmtech.productsapi.service.interfaces;
 
-import com.farmtech.productsapi.dto.ProductDTO;
-import org.springframework.stereotype.Service;
+import com.farmtech.productsapi.domain.dto.ProductDTO;
 
 import java.util.List;
 

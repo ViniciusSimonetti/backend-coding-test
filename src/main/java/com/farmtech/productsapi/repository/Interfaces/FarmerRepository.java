@@ -1,6 +1,6 @@
 package com.farmtech.productsapi.repository.Interfaces;
 
-import com.farmtech.productsapi.data.Farmer;
+import com.farmtech.productsapi.domain.entity.Farmer;
 import org.springframework.data.jpa.repository.JpaRepository;
 //Interface para o repositório de agricultores
 public interface FarmerRepository extends JpaRepository<Farmer, Long> {

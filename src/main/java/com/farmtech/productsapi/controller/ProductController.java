@@ -1,15 +1,13 @@
 package com.farmtech.productsapi.controller;
-import com.farmtech.productsapi.dto.ProductDTO;
+import com.farmtech.productsapi.domain.dto.ProductDTO;
 
-import com.farmtech.productsapi.mapper.Mapper;
-import com.farmtech.productsapi.model.ProductModel;
+import com.farmtech.productsapi.domain.mapper.Mapper;
+import com.farmtech.productsapi.domain.model.ProductModel;
 import com.farmtech.productsapi.service.interfaces.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 
 //Controlador REST para gerenciar produtos

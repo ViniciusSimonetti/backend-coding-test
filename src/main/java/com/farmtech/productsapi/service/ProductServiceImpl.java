@@ -1,15 +1,13 @@
 package com.farmtech.productsapi.service;
 
-import com.farmtech.productsapi.data.Farmer;
-import com.farmtech.productsapi.data.Product;
-import com.farmtech.productsapi.dto.FarmerDTO;
-import com.farmtech.productsapi.dto.ProductDTO;
-import com.farmtech.productsapi.mapper.Mapper;
+import com.farmtech.productsapi.domain.entity.Farmer;
+import com.farmtech.productsapi.domain.entity.Product;
+import com.farmtech.productsapi.domain.dto.ProductDTO;
+import com.farmtech.productsapi.domain.mapper.Mapper;
 import com.farmtech.productsapi.repository.Interfaces.FarmerRepository;
 import com.farmtech.productsapi.repository.Interfaces.ProductRepository;
 import com.farmtech.productsapi.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -31,7 +29,6 @@ public class ProductServiceImpl implements ProductService {
     //Implementação para salvar um produto no H2 database
     @Override
     public Object saveProduct(ProductDTO  productDTO) {
-
         //Regra de negocio para validacao (nao permitir menos 3 caracteres no nome e nome em branco)
         // 1) validação do nome
         if (productDTO == null || productDTO.name == null) {
@@ -44,10 +41,8 @@ public class ProductServiceImpl implements ProductService {
             return "Product name must have at least 3 characters.";
         }
 
-
         // salva o nome já corrigido (sem espaços)
         productDTO.name = name;
-
 
         //Implementando o mapper
         Product product  = mapper.MapperToEntity(productDTO);
@@ -101,7 +96,6 @@ public class ProductServiceImpl implements ProductService {
         return resultDTO;
     }
 
-
     //Implementação para atualizar um produto no H2 database
     @Override
     public List<ProductDTO> listProducts() {
@@ -125,7 +119,5 @@ public class ProductServiceImpl implements ProductService {
                 })
                 .orElseThrow(() -> new RuntimeException("Product not found"));
     }
-
-
 }
 

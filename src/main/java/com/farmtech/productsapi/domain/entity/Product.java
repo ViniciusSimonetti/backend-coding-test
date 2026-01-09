@@ -1,4 +1,4 @@
-package com.farmtech.productsapi.data;
+package com.farmtech.productsapi.domain.entity;
 
 import java.time.LocalDateTime;
 

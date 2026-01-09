@@ -1,11 +1,11 @@
-package com.farmtech.productsapi.mapper;
+package com.farmtech.productsapi.domain.mapper;
 
-import com.farmtech.productsapi.dto.FarmerDTO;
-import com.farmtech.productsapi.data.Farmer;
-import com.farmtech.productsapi.data.Product;
-import com.farmtech.productsapi.dto.ProductDTO;
-import com.farmtech.productsapi.model.FarmerModel;
-import com.farmtech.productsapi.model.ProductModel;
+import com.farmtech.productsapi.domain.dto.FarmerDTO;
+import com.farmtech.productsapi.domain.entity.Farmer;
+import com.farmtech.productsapi.domain.entity.Product;
+import com.farmtech.productsapi.domain.dto.ProductDTO;
+import com.farmtech.productsapi.domain.model.FarmerModel;
+import com.farmtech.productsapi.domain.model.ProductModel;
 
 //Classe Mapper para conversão entre DTOs, entidades e modelos
 public class Mapper {

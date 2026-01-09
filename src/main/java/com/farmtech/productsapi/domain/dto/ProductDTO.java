@@ -1,4 +1,4 @@
-package com.farmtech.productsapi.dto;
+package com.farmtech.productsapi.domain.dto;
 
 import java.time.LocalDateTime;
 
